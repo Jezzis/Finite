@@ -116,7 +116,7 @@ class ArrayLoader implements LoaderInterface
     {
         $resolver = new OptionsResolver();
         $resolver->setRequired(array('from', 'to'));
-        $resolver->setDefaults(array('guard' => null, 'configure_properties' => null, 'properties' => array()));
+        $resolver->setDefaults(array('guard' => null, 'configure_properties' => null, 'properties' => array(), 'desc' => ''));
 
         $resolver->setAllowedTypes('configure_properties', array('null', 'callable'));
 
@@ -142,6 +142,7 @@ class ArrayLoader implements LoaderInterface
                     $config['from'],
                     $config['to'],
                     $config['guard'],
+                    $config['desc'],
                     $config['configure_properties']
                 )
             );

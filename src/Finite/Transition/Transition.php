@@ -34,6 +34,11 @@ class Transition implements PropertiesAwareTransitionInterface
     protected $name;
 
     /**
+     * @var string
+     */
+    protected $description;
+
+    /**
      * @var callable
      */
     protected $guard;
@@ -48,6 +53,7 @@ class Transition implements PropertiesAwareTransitionInterface
      * @param string|array    $initialStates
      * @param string          $state
      * @param callable|null   $guard
+     * @param string          $description
      * @param OptionsResolver $propertiesOptionsResolver
      */
     public function __construct(
@@ -55,6 +61,7 @@ class Transition implements PropertiesAwareTransitionInterface
         $initialStates,
         $state,
         $guard = null,
+        $description,
         OptionsResolver $propertiesOptionsResolver = null
     ) {
         if (null !== $guard && !is_callable($guard)) {
@@ -65,6 +72,7 @@ class Transition implements PropertiesAwareTransitionInterface
         $this->state = $state;
         $this->initialStates = (array) $initialStates;
         $this->guard = $guard;
+        $this->description = $description;
         $this->propertiesOptionsResolver = $propertiesOptionsResolver ?: new OptionsResolver();
     }
 
@@ -109,6 +117,14 @@ class Transition implements PropertiesAwareTransitionInterface
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**

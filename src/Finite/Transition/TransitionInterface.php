@@ -42,6 +42,13 @@ interface TransitionInterface
     public function getName();
 
     /**
+     * Returns the description of the transition.
+     *
+     * @return string
+     */
+    public function getDescription();
+
+    /**
      * Returns the closure. If closure execution returns false, transition cannot be applied.
      *
      * @return callable
